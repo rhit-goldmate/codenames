@@ -8,6 +8,43 @@ import "./index.css";
 //   "RIVER", "NOTE", "TABLE", "CHAIR", "BOOK",
 //   "MOON", "STAR", "LIGHT", "GLASS", "CLOCK"
 // ];
+// Beginner (50)
+const WORDS_BEGINNER = [
+  "APPLE", "DOG", "CAT", "CAR", "TRAIN",
+  "HOUSE", "TREE", "BOOK", "CHAIR", "TABLE",
+  "PHONE", "CLOCK", "SHOE", "HAT", "BALL",
+  "WATER", "FIRE", "SNOW", "SUN", "MOON",
+  "STAR", "FOOD", "BREAD", "MILK", "EGG",
+  "ROAD", "BRIDGE", "RIVER", "MOUNTAIN", "BEACH",
+  "CITY", "FARM", "SCHOOL", "STORE", "PARK",
+  "DOOR", "WINDOW", "KEY", "LIGHT", "GLASS",
+  "PAPER", "PEN", "MAP", "CAMERA", "MUSIC",
+  "BABY", "FRIEND", "FAMILY", "HOME", "GARDEN"
+];
+
+// Intermediate (35)
+const WORDS_INTERMEDIATE = [
+  "BANK", "CODE", "ENGINE", "FIELD", "CHARGE",
+  "SCREEN", "SERVER", "NETWORK", "SIGNAL", "POWER",
+  "RING", "BAT", "PLANE", "PORT", "CHANNEL",
+  "VOLUME", "PRESS", "MATCH", "NOTE", "TRACK",
+  "SCALE", "THREAD", "CHAIN", "FRAME", "CORE",
+  "SHIFT", "BLOCK", "LINK", "PATH", "LEVEL",
+  "BOUNDARY", "COVER", "POINT", "BRANCH", "STREAM"
+];
+
+// Advanced (15)
+const WORDS_ADVANCED = [
+  "VIRUS", "SHADOW", "AGENT", "SIGNATURE", "PROTOCOL",
+  "PARADOX", "VECTOR", "DOMAIN", "PAYLOAD", "MIRROR",
+  "DECAY", "ECHO", "FRACTURE", "OBSERVER", "ORIGIN"
+];
+
+const WORDS = [
+  ...WORDS_BEGINNER,
+  ...WORDS_INTERMEDIATE,
+  ...WORDS_ADVANCED
+];
 
 function shuffle(array) {
   const copy = [...array];
