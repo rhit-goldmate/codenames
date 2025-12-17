@@ -17,7 +17,7 @@ body {
   gap: 10px;
 }
 
-.tile {
+/* .tile {
   height: 80px;
   background: #ddd;
   border-radius: 8px;
@@ -41,4 +41,135 @@ body {
 .tile.assassin {
   background: #222;
   color: white;
+} */
+
+button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: #2d3748;
+  color: white;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
+
+button:hover {
+  background: #1a202c;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+button.primary {
+  background: #16a34a;
+}
+
+button.primary:hover {
+  background: #15803d;
+}
+
+.tile-container {
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.tile-inner {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.tile-container.revealed .tile-inner {
+  transform: rotateY(180deg);
+}
+
+.tile-container.revealed {
+  pointer-events: none;
+}
+
+.tile-front,
+.tile-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.tile-front {
+  background: #ddd;
+}
+
+.tile-back {
+  transform: rotateY(180deg);
+}
+
+.tile-back.blue {
+  background: #4a90e2;
+  color: white;
+}
+
+.tile-back.neutral {
+  background: #d6cfc4;
+}
+
+.tile-back.assassin {
+  background: #222;
+  color: white;
+}
+
+.tile-container:hover .tile-inner {
+  transform: scale(1.03);
+}
+
+.status {
+  min-height: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* Fade-in animation */
+.status.won,
+.status.lost {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.board.game-over .tile-container:not(.revealed):hover .tile-inner {
+  transform: none;
+}
+
