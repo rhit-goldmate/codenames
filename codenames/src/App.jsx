@@ -77,7 +77,7 @@ export default function App() {
   const [gameStatus, setGameStatus] = useState("playing");
 
   function revealTile(index) {
-    if (gameStatus !== "playing") return;
+    if (gameStatus !== "playing" || spymasterView) return;
 
     const tile = board[index];
     if (tile.revealed) return;

@@ -181,6 +181,10 @@ button.primary:hover {
   background-color: #a9a39c; 
 }
 
+.board.spymaster .tile-container {
+  pointer-events: none;
+}
+
 /* Spymaster view flips tiles WITHOUT marking them revealed */
 .board.spymaster .tile-inner.spymaster-reveal {
   transform: rotateY(180deg);
