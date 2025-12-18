@@ -173,18 +173,12 @@ button.primary:hover {
   transform: none;
 }
 
-/* Spymaster memory shading (FIXED) */
 .board.spymaster .tile-container.revealed .tile-back.blue {
-  background-color: #1e4fa3; /* darker blue */
+  background-color: #366ba8;
 }
 
 .board.spymaster .tile-container.revealed .tile-back.neutral {
-  background-color: #c9b48a; /* darker tan */
-}
-
-.board.spymaster .tile-container.revealed .tile-back.blue,
-.board.spymaster .tile-container.revealed .tile-back.neutral {
-  filter: saturate(90%);
+  background-color: #a9a39c; 
 }
 
 /* Spymaster view flips tiles WITHOUT marking them revealed */
