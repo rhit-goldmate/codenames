@@ -1,13 +1,8 @@
 import { useState } from "react";
 import "./index.css";
 
-// const WORDS = [
-//   "APPLE", "TRAIN", "BANK", "CODE", "DOG",
-//   "CAT", "CAR", "BRIDGE", "PILOT", "PLANE",
-//   "MOUSE", "KEY", "SCREEN", "JACK", "CROWN",
-//   "RIVER", "NOTE", "TABLE", "CHAIR", "BOOK",
-//   "MOON", "STAR", "LIGHT", "GLASS", "CLOCK"
-// ];
+/* ================= WORD LISTS ================= */
+
 // Beginner (50)
 const WORDS_BEGINNER = [
   "APPLE", "DOG", "CAT", "CAR", "TRAIN",
@@ -46,6 +41,8 @@ const WORDS = [
   ...WORDS_ADVANCED
 ];
 
+/* ================= HELPERS ================= */
+
 function shuffle(array) {
   const copy = [...array];
   for (let i = copy.length - 1; i > 0; i--) {
@@ -71,6 +68,8 @@ function generateBoard() {
   }));
 }
 
+/* ================= APP ================= */
+
 export default function App() {
   const [board, setBoard] = useState(generateBoard);
   const [spymasterView, setSpymasterView] = useState(false);
@@ -78,12 +77,11 @@ export default function App() {
   const [gameStatus, setGameStatus] = useState("playing");
 
   function revealTile(index) {
-    if (gameStatus != "playing") return;
+    if (gameStatus !== "playing") return;
 
     const tile = board[index];
     if (tile.revealed) return;
 
-    // Handle game logic first
     if (tile.color === "blue") {
       const newRemaining = remainingBlue - 1;
       setRemainingBlue(newRemaining);
@@ -109,6 +107,14 @@ export default function App() {
     setGameStatus("playing");
   }
 
+  /* ===== CLEAN CLASSNAME COMPOSITION ===== */
+
+  const boardClassName = [
+    "board",
+    gameStatus !== "playing" && "game-over",
+    spymasterView && "spymaster"
+  ].filter(Boolean).join(" ");
+
   return (
     <div className="app">
       <h1>Codenames (Co-Op)</h1>
@@ -129,19 +135,21 @@ export default function App() {
           Spymaster View
         </label>
 
-        <button className="primary" onClick={resetGame}>New Game</button>
+        <button className="primary" onClick={resetGame}>
+          New Game
+        </button>
       </div>
 
-      <div className={`board ${gameStatus !== "playing" ? "game-over" : ""}`}>
+      <div className={boardClassName}>
         {board.map((tile, index) => (
           <div
             key={index}
             className={`tile-container ${
-              tile.revealed || spymasterView ? "revealed" : ""
+              tile.revealed ? "revealed" : ""
             }`}
             onClick={() => revealTile(index)}
           >
-            <div className="tile-inner">
+            <div className={`tile-inner ${spymasterView ? "spymaster-reveal" : ""}`}>
               <div className="tile-front">
                 {tile.word}
               </div>
